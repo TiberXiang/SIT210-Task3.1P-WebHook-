@@ -1,0 +1,17 @@
+int led = D7;
+int LightSensor = A1;
+
+void setup() {
+    pinMode(led, OUTPUT);
+}
+
+void loop() {
+    digitalWrite(led, HIGH);
+    
+    String LightData = String(analogRead(LightSensor));
+    Particle.publish("Light", LightData, PRIVATE);
+    delay(30000); //wait for 30 seconds
+    
+    digitalWrite(led,LOW);
+    delay(30000); //wait for 30 seconds
+}
